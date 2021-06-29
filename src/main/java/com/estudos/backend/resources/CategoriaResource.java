@@ -21,7 +21,6 @@ public class CategoriaResource {
 	public ResponseEntity<?> buscarPeloId(@PathVariable Integer id) {
 		
 		Categoria obj = service.buscarPorId(id);
-		
 		return ResponseEntity.ok().body(obj);
 	}
 	
