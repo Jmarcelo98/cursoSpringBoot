@@ -13,7 +13,7 @@ import com.estudos.backend.services.CategoriaService;
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
-	
+
 	@Autowired
 	private CategoriaService service;
 
@@ -22,5 +22,5 @@ public class CategoriaResource {
 		Categoria obj = service.buscarPorId(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 }
