@@ -23,4 +23,9 @@ public class CategoriaService {
 
 	}
 
+	public Categoria adicionar(Categoria categoria) {
+		categoria.setId(null);
+		return repo.save(categoria);
+	}
+
 }
