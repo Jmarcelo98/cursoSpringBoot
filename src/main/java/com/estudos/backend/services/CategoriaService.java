@@ -38,13 +38,13 @@ public class CategoriaService {
 	}
 
 //	ATUALIZAR CATEGORIA
-	public Categoria atualizarCategoria(Categoria categoria) {
+	public Categoria atualizar(Categoria categoria) {
 		buscarPorId(categoria.getId());
 		return repo.save(categoria);
 	}
 
 //	DELETAR CATEGORIA
-	public void deletarCategoria(Integer id) {
+	public void deletar(Integer id) {
 		buscarPorId(id);
 		try {
 			repo.deleteById(id);
@@ -54,7 +54,7 @@ public class CategoriaService {
 	}
 
 //	BUSCAR TODAS AS CATEGORIAS
-	public List<Categoria> buscarTodasAsCategorias() {
+	public List<Categoria> buscarTodas() {
 		return repo.findAll();
 	}
 

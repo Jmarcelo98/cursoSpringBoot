@@ -36,7 +36,7 @@ public class Cliente implements Serializable {
 	@CollectionTable(name = "TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 
-	@JsonIgnore	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipoCliente = tipoCliente.getCodigo();
+		this.tipoCliente = (tipoCliente == null) ? null : tipoCliente.getCodigo();
 	}
 
 	public Integer getId() {

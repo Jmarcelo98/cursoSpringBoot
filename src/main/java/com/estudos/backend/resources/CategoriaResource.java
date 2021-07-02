@@ -40,34 +40,33 @@ public class CategoriaResource {
 
 //	ADICIONAR UMA NOVA CATEGORIA
 	@PostMapping
-	public ResponseEntity<Void> adicionarCategoria(@Valid @RequestBody CategoriaDTO categoriaDto) {
+	public ResponseEntity<Void> adicionar(@Valid @RequestBody CategoriaDTO categoriaDto) {
 		Categoria obj = service.apartirDeUmDto(categoriaDto);
 		obj = service.adicionar(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId())
-				.toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 //	ATUALIZAR UMA CATEGORIA
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> atualizarCategoria(@Valid @RequestBody CategoriaDTO categoriaDto, @PathVariable Integer id) {
+	public ResponseEntity<Void> atualizar(@Valid @RequestBody CategoriaDTO categoriaDto, @PathVariable Integer id) {
 		Categoria categoria = service.apartirDeUmDto(categoriaDto);
 		categoria.setId(id);
-		categoria = service.atualizarCategoria(categoria);
+		categoria = service.atualizar(categoria);
 		return ResponseEntity.noContent().build();
 	}
 
 //	DELETAR UMA CATEGORIA
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deletarCategoria(@PathVariable Integer id) {
-		service.deletarCategoria(id);
+	public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+		service.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
 
 //	BUSCAR TODAS AS CATEGORIAS SEM OS PRODUTOS
 	@GetMapping
-	public ResponseEntity<List<CategoriaDTO>> buscarTodasCategorias() {
-		List<Categoria> list = service.buscarTodasAsCategorias();
+	public ResponseEntity<List<CategoriaDTO>> buscarTodas() {
+		List<Categoria> list = service.buscarTodas();
 		List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
 	}
