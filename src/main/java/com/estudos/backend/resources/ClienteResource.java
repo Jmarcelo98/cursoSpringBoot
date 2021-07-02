@@ -49,8 +49,8 @@ public class ClienteResource {
 
 //	ATUALIZAR UM CLIENTE
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> atualizar(@Valid @RequestBody ClienteDTO categoriaDto, @PathVariable Integer id) {
-		Cliente categoria = service.apartirDeUmDto(categoriaDto);
+	public ResponseEntity<Void> atualizar(@Valid @RequestBody ClienteDTO  clienteDto, @PathVariable Integer id) {
+		Cliente categoria = service.apartirDeUmDto(clienteDto);
 		categoria.setId(id);
 		categoria = service.atualizar(categoria);
 		return ResponseEntity.noContent().build();
