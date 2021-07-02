@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.estudos.backend.DTO.CategoriaDTO;
 import com.estudos.backend.domain.Categoria;
 import com.estudos.backend.repositories.CategoriaRepository;
 import com.estudos.backend.services.exception.DataIntegrityException;
@@ -21,6 +22,7 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repo;
 
+//	BUSCAR UMA CATEGORIA
 	public Categoria buscarPorId(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 
@@ -29,16 +31,19 @@ public class CategoriaService {
 
 	}
 
+//	ADICIONAR CATEGORIA
 	public Categoria adicionar(Categoria categoria) {
 		categoria.setId(null);
 		return repo.save(categoria);
 	}
 
+//	ATUALIZAR CATEGORIA
 	public Categoria atualizarCategoria(Categoria categoria) {
 		buscarPorId(categoria.getId());
 		return repo.save(categoria);
 	}
 
+//	DELETAR CATEGORIA
 	public void deletarCategoria(Integer id) {
 		buscarPorId(id);
 		try {
@@ -48,16 +53,22 @@ public class CategoriaService {
 		}
 	}
 
+//	BUSCAR TODAS AS CATEGORIAS
 	public List<Categoria> buscarTodasAsCategorias() {
 		return repo.findAll();
 	}
 
+//	PAGINACAO
 	public Page<Categoria> procurarPagina(Integer pagina, Integer linhasPorPagina, String ordernarPor,
 			String direcaoOrdernar) {
 
 		PageRequest pageRequest = PageRequest.of(0, linhasPorPagina, Direction.valueOf(direcaoOrdernar), ordernarPor);
 		return repo.findAll(pageRequest);
 
+	}
+	
+	public Categoria apartirDeUmDto(CategoriaDTO catDto) {
+		return new Categoria(catDto.getId(), catDto.getNome());
 	}
 
 }
