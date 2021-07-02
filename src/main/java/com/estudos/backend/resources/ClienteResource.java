@@ -33,7 +33,7 @@ public class ClienteResource {
 		Cliente obj = service.buscarPorId(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> atualizar(@Valid @RequestBody ClienteDTO categoriaDto, @PathVariable Integer id) {
 		Cliente categoria = service.apartirDeUmDto(categoriaDto);

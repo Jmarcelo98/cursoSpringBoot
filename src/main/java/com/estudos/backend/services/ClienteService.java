@@ -33,9 +33,9 @@ public class ClienteService {
 //	ATUALIZAR CLIENTE
 	public Cliente atualizar(Cliente cliente) {
 		Cliente novoCliente = buscarPorId(cliente.getId());
-		
-		atualizarData(novoCliente, cliente);
-		
+
+		atualizarDado(novoCliente, cliente);
+
 		return repo.save(novoCliente);
 	}
 
@@ -66,9 +66,9 @@ public class ClienteService {
 	public Cliente apartirDeUmDto(ClienteDTO cliDto) {
 		return new Cliente(cliDto.getId(), cliDto.getNome(), cliDto.getEmail(), null, null);
 	}
-	
-	private void atualizarData(Cliente novoCliente, Cliente cliente) {
-		novoCliente.setNome(cliente.getNome()); 
+
+	private void atualizarDado(Cliente novoCliente, Cliente cliente) {
+		novoCliente.setNome(cliente.getNome());
 		novoCliente.setEmail(cliente.getEmail());
 	}
 

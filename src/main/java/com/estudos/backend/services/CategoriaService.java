@@ -39,8 +39,11 @@ public class CategoriaService {
 
 //	ATUALIZAR CATEGORIA
 	public Categoria atualizar(Categoria categoria) {
-		buscarPorId(categoria.getId());
-		return repo.save(categoria);
+		Categoria novaCategoria = buscarPorId(categoria.getId());
+
+		atualizarDado(novaCategoria, categoria);
+
+		return repo.save(novaCategoria);
 	}
 
 //	DELETAR CATEGORIA
@@ -66,9 +69,13 @@ public class CategoriaService {
 		return repo.findAll(pageRequest);
 
 	}
-	
+
 	public Categoria apartirDeUmDto(CategoriaDTO catDto) {
 		return new Categoria(catDto.getId(), catDto.getNome());
+	}
+
+	private void atualizarDado(Categoria novaCategoria, Categoria categoria) {
+		novaCategoria.setNome(categoria.getNome());
 	}
 
 }
