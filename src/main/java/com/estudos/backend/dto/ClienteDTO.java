@@ -1,4 +1,4 @@
-package com.estudos.backend.DTO;
+package com.estudos.backend.dto;
 
 import java.io.Serializable;
 

@@ -10,8 +10,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.estudos.backend.DTO.CategoriaDTO;
 import com.estudos.backend.domain.Categoria;
+import com.estudos.backend.dto.CategoriaDTO;
 import com.estudos.backend.repositories.CategoriaRepository;
 import com.estudos.backend.services.exception.DataIntegrityException;
 import com.estudos.backend.services.exception.ObjectNotFoundException;
@@ -65,7 +65,7 @@ public class CategoriaService {
 	public Page<Categoria> procurarPagina(Integer pagina, Integer linhasPorPagina, String ordernarPor,
 			String direcaoOrdernar) {
 
-		PageRequest pageRequest = PageRequest.of(0, linhasPorPagina, Direction.valueOf(direcaoOrdernar), ordernarPor);
+		PageRequest pageRequest = PageRequest.of(pagina, linhasPorPagina, Direction.valueOf(direcaoOrdernar), ordernarPor);
 		return repo.findAll(pageRequest);
 
 	}

@@ -8,9 +8,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.estudos.backend.DTO.ClienteNovoDTO;
 import com.estudos.backend.domain.Cliente;
 import com.estudos.backend.domain.enums.TipoCliente;
+import com.estudos.backend.dto.ClienteNovoDTO;
 import com.estudos.backend.repositories.ClienteRepository;
 import com.estudos.backend.resources.exception.CampoMensagem;
 import com.estudos.backend.services.validation.utils.BR;

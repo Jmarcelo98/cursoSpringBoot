@@ -10,12 +10,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.estudos.backend.DTO.ClienteDTO;
-import com.estudos.backend.DTO.ClienteNovoDTO;
 import com.estudos.backend.domain.Cidade;
 import com.estudos.backend.domain.Cliente;
 import com.estudos.backend.domain.Endereco;
 import com.estudos.backend.domain.enums.TipoCliente;
+import com.estudos.backend.dto.ClienteDTO;
+import com.estudos.backend.dto.ClienteNovoDTO;
 import com.estudos.backend.repositories.CidadeRepository;
 import com.estudos.backend.repositories.ClienteRepository;
 import com.estudos.backend.repositories.EnderecoRepository;

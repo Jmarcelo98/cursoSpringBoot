@@ -11,8 +11,8 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
-import com.estudos.backend.DTO.ClienteDTO;
 import com.estudos.backend.domain.Cliente;
+import com.estudos.backend.dto.ClienteDTO;
 import com.estudos.backend.repositories.ClienteRepository;
 import com.estudos.backend.resources.exception.CampoMensagem;
 

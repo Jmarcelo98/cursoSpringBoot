@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.estudos.backend.DTO.ClienteDTO;
-import com.estudos.backend.DTO.ClienteNovoDTO;
 import com.estudos.backend.domain.Cliente;
+import com.estudos.backend.dto.ClienteDTO;
+import com.estudos.backend.dto.ClienteNovoDTO;
 import com.estudos.backend.services.ClienteService;
 
 @RestController
