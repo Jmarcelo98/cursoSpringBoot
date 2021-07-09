@@ -14,7 +14,6 @@ public class BackEndApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
 	}
 
 }
