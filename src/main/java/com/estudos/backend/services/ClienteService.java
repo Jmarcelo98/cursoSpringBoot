@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.estudos.backend.domain.Cidade;
@@ -30,9 +31,12 @@ public class ClienteService {
 
 	@Autowired
 	private CidadeRepository cidadeRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private EnderecoRepository enderecoRepository;
+
+	@Autowired
+	private BCryptPasswordEncoder pe;
 
 	public Cliente buscarPorId(Integer id) {
 
@@ -85,12 +89,12 @@ public class ClienteService {
 	}
 
 	public Cliente apartirDeUmDto(ClienteDTO cliDto) {
-		return new Cliente(cliDto.getId(), cliDto.getNome(), cliDto.getEmail(), null, null);
+		return new Cliente(cliDto.getId(), cliDto.getNome(), cliDto.getEmail(), null, null, null);
 	}
 
 	public Cliente apartirDeUmDto(ClienteNovoDTO cliDto) {
 		Cliente cli = new Cliente(null, cliDto.getNome(), cliDto.getEmail(), cliDto.getCpfOuCnpj(),
-				TipoCliente.toEnum(cliDto.getTipoCliente()));
+				TipoCliente.toEnum(cliDto.getTipoCliente()), pe.encode(cliDto.getSenha()));
 
 		Cidade cid = cidadeRepository.findById(cliDto.getCidadeId()).get();
 
@@ -98,7 +102,7 @@ public class ClienteService {
 				cliDto.getBairro(), cliDto.getCep(), cli, cid);
 
 		cli.getEnderecos().add(end);
-		
+
 		cli.getTelefones().add(cliDto.getTelefone1());
 
 		if (cliDto.getTelefone2() != null) {
