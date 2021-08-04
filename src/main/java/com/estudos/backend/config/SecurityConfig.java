@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] PUBLIC_MATHCERS_GET = { "/produtos/**", "/categorias/**" };
 
-	private static final String[] PUBLIC_MATHCERS_POST = { "/clientes/**" };
+	private static final String[] PUBLIC_MATHCERS_POST = { "/clientes/**", "/auth/forgot/**" };
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -51,8 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 
 		http.cors().and().csrf().disable();
-		http.authorizeRequests()
-				.antMatchers(HttpMethod.POST, PUBLIC_MATHCERS_POST).permitAll()
+		http.authorizeRequests().antMatchers(HttpMethod.POST, PUBLIC_MATHCERS_POST).permitAll()
 				.antMatchers(HttpMethod.GET, PUBLIC_MATHCERS_GET).permitAll().antMatchers(PUBLIC_MATHCERS).permitAll()
 				.anyRequest().authenticated();
 		http.addFilter(new JwtFIltroAutenticacao(authenticationManager(), jwtUtil));
